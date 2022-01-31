@@ -1,2 +1,38 @@
 <h1>Cards#index</h1>
-<p>Find me in app/views/cards/index.html.erb</p>
+<p>現在登録されている読書カードリストです</p>
+<% if flash[:notice] %>
+    <p class="notice"><%= flash[:notice]%></p>
+<% end %>
+
+<thead>
+    <tr>
+        <th>id</th>
+        <th>タイトル</th>
+        <th>著者</th>
+        <th>価格</th>
+        <th>出版社</th>
+        <th>メモ</th>
+        <th>記入日</th>
+        <th>編集日</th>
+    </tr>
+</thead>
+
+
+<table>
+    <tbody>
+        <% @cards.each do |f| %>
+            <tr>
+                <td><%= f.id %></td>
+                <td><%= f.title %></td>
+                <td><%= f.author %></td>
+                <td><%= f.price %></td>
+                <td><%= f.publisher %></td>
+                <td><%= f.memo %></td>
+                <td><%= f.updated_at.to_s(:datetime_jp) %></td>
+                <td><%= f.created_at.to_s(:datetime_jp) %></td>
+                <td><%= link_to "参照",f %></td>
+                <td><%= link_to "編集",[:edit,f] %></td>
+            </tr>
+        <% end %>
+    </tbody>
+  </table>  

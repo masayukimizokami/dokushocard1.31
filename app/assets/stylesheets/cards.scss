@@ -1,3 +1,14 @@
-// Place all the styles related to the cards controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: https://sass-lang.com/
+table th{
+    background-color: #fbc23b;
+    padding:10px 20px;
+}
+
+table td{
+    background-color: #f9ecd5;
+    padding:10px 20px;
+}
+
+.notice{
+    background-color: rgb(230, 20, 90);
+    padding: 5px;
+}
