@@ -1,6 +1,7 @@
 class CardsController < ApplicationController
   def index
     @cards = Card.all
+    @posts = Post.all
   end
 
   def new
@@ -37,8 +38,11 @@ class CardsController < ApplicationController
     end
   end
 
-  def delete
-    @card = Card.find(params:id)
+  def destroy
+    @card = Card.find(params[:id])
+    @card.destroy
+    flash[:notice] = "本情報を削除しました"
+    redirect_to :cards
   end
 
 

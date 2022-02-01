@@ -4,35 +4,63 @@
     <p class="notice"><%= flash[:notice]%></p>
 <% end %>
 
-<thead>
-    <tr>
-        <th>id</th>
-        <th>タイトル</th>
-        <th>著者</th>
-        <th>価格</th>
-        <th>出版社</th>
-        <th>メモ</th>
-        <th>記入日</th>
-        <th>編集日</th>
-    </tr>
-</thead>
-
-
 <table>
-    <tbody>
-        <% @cards.each do |f| %>
+    <thead>
+        <tr>
+            <th>id</th>
+            <th>タイトル</th>
+            <th>著者</th>
+            <th>価格</th>
+            <th>出版社</th>
+            <th>メモ</th>
+            <th>記入日</th>
+            <th>編集日</th>
+        </tr>
+    </thead>
+<table>
+
+
+    <table>
+        <tbody>
+            <% @cards.each do |f| %>
+                <tr>
+                    <td><%= f.id %></td>
+                    <td><%= f.title %></td>
+                    <td><%= f.author %></td>
+                    <td><%= f.price %></td>
+                    <td><%= f.publisher %></td>
+                    <td><%= f.memo %></td>
+                    <td><%= f.updated_at.to_s(:datetime_jp) %></td>
+                    <td><%= f.created_at.to_s(:datetime_jp) %></td>
+                    <td><%= link_to "参照",f %></td>
+                    <td><%= link_to "編集",[:edit,f] %></td>
+                    <td><%= link_to "削除",f,method: :delete, date:{ confirm:"本当に削除しますか？"} %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>  
+    <h3>投稿一覧</h3>
+
+    <table>
+        <thead>
             <tr>
-                <td><%= f.id %></td>
-                <td><%= f.title %></td>
-                <td><%= f.author %></td>
-                <td><%= f.price %></td>
-                <td><%= f.publisher %></td>
-                <td><%= f.memo %></td>
-                <td><%= f.updated_at.to_s(:datetime_jp) %></td>
-                <td><%= f.created_at.to_s(:datetime_jp) %></td>
-                <td><%= link_to "参照",f %></td>
-                <td><%= link_to "編集",[:edit,f] %></td>
+                <th>投稿内容</th>
+                <th>更新日時</th>
+                <th>投稿日時</th>
+                <th>投稿者(User_id)</th>
             </tr>
-        <% end %>
-    </tbody>
-  </table>  
+        </thead>
+        <tbody>
+            <% @posts.each do |f| %>
+                <tr>
+                    <td><%= f.content %></td>
+                    <td><%= f.updated_at.to_s(:datetime_jp) %></td>
+                    <td><%= f.created_at.to_s(:datetime_jp) %></td>
+                    <td><%= f.user_id %></td>
+                </tr>
+            <% end %>
+        </tbody>
+    </table>
+  <div>
+    <%= link_to "新規作成",new_card_path %>
+  </div>

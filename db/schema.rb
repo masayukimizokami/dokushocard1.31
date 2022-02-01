@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_31_084841) do
+ActiveRecord::Schema.define(version: 2022_02_01_084834) do
 
   create_table "cards", force: :cascade do |t|
     t.text "title"
@@ -18,6 +18,13 @@ ActiveRecord::Schema.define(version: 2022_01_31_084841) do
     t.integer "price"
     t.text "publisher"
     t.text "memo"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "content"
+    t.integer "card_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

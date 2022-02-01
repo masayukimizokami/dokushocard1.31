@@ -26,6 +26,7 @@
         <ul>
             <li><%= f.submit"編集完了" %></li>
             <li><%= link_to"一覧に戻る" ,:cards %></li>
+            <li><%= link_to "削除",f,method:delete,date:{confirm:"本当に削除しますか？"} %></li>
         </ul>
     </div>
     <% end %>
